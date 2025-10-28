@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GURU - Official Gaming Platform</title>
+    <link rel="icon" href="https://i.ibb.co/sk3fFFt/Picsart-25-10-28-18-00-50-166.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
         :root {
-            --primary-color: #8A2BE2; /* A vibrant purple */
-            --secondary-color: #FFD700; /* Gold for highlights */
+            --primary-color: #8A2BE2; /* A more vibrant purple for gaming */
+            --primary-light: #9932CC;
             --dark-bg: #121828;
             --card-bg: #1B2133;
             --text-light: #f5f6fa;
-            --text-muted: #a29bfe;
+            --text-secondary: #aaaebc;
+            --success-color: #00b894;
+            --accent-glow: rgba(138, 43, 226, 0.4);
         }
 
         * {
@@ -23,15 +26,13 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-light);
-            line-height: 1.7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -40,192 +41,225 @@
             padding: 20px;
         }
 
-        .section {
-            padding: 60px 0;
-            border-bottom: 1px solid var(--card-bg);
-        }
-
         /* --- Header --- */
         .header {
             text-align: center;
-            padding: 60px 0;
+            padding: 50px 0;
         }
 
         .app-logo {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             border-radius: 28px;
             margin-bottom: 25px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            border: 3px solid var(--primary-color);
+            box-shadow: 0 10px 40px var(--accent-glow);
+            border: 2px solid var(--primary-light);
         }
 
         .header h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            letter-spacing: -1px;
-            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--primary-light), var(--text-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
 
         .header .subtitle {
             font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 550px;
-            margin: 10px auto 30px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
         }
-
+        
+        /* --- Main Download Button --- */
         .download-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            background: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-light), var(--primary-color));
+            background-size: 200% 100%;
             color: var(--text-light);
             padding: 18px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-size: 1.4rem;
             font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.3s ease, background-position 0.5s ease;
+            box-shadow: 0 8px 30px var(--accent-glow);
+            border: none;
         }
 
         .download-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.6);
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 12px 35px var(--accent-glow);
+            background-position: 100% 0;
         }
 
         .file-info {
             margin-top: 15px;
             font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* --- Section Titles --- */
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            font-weight: 700;
-            color: var(--text-light);
+            color: #888;
         }
         
-        /* --- Gallery Section --- */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .gallery-item img {
-            width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            transition: transform 0.3s ease;
-        }
-        .gallery-item img:hover {
-            transform: scale(1.05);
+        /* --- Shared Section Title --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 80px;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            font-weight: 700;
         }
 
         /* --- How It Works Section --- */
-        .how-it-works-grid {
+        .steps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
         }
+
         .step-card {
-            background: var(--card-bg);
+            background-color: var(--card-bg);
             padding: 30px;
             border-radius: 16px;
-            text-align: center;
             border-top: 4px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        .step-card .step-number {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+
+        .step-card .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
         }
+
         .step-card h3 {
             font-size: 1.3rem;
             margin-bottom: 10px;
         }
+        
         .step-card p {
-            color: var(--text-muted);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* --- Features Section --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background-color: #2e3549;
+        }
+        
+        .feature-card .icon {
+            font-size: 2.5rem;
+            color: var(--primary-light);
+        }
+        
+        .feature-card .text-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .feature-card .text-content p {
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        /* --- FAQ Section --- */
-        .faq-item {
-            background-color: var(--card-bg);
+        /* --- Trust & Safety Section --- */
+        .trust-section {
+            background: url('https://www.transparenttextures.com/patterns/clean-gray-paper.png') var(--card-bg);
+            padding: 40px;
+            margin-top: 60px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--primary-color);
+        }
+
+        .trust-section .icon {
+            font-size: 3rem;
+            color: var(--success-color);
+            margin-bottom: 15px;
+        }
+        
+        .trust-section h2 {
+            font-size: 1.8rem;
+            color: var(--text-light);
             margin-bottom: 10px;
-            border-radius: 12px;
         }
-        .faq-question {
-            padding: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        
+        .trust-section p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .faq-question i {
-            transition: transform 0.3s ease;
+        
+        /* --- Final CTA Section --- */
+        .final-cta {
+            text-align: center;
+            margin-top: 60px;
         }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 20px;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            color: var(--text-muted);
-        }
-        .faq-item.active .faq-answer {
-            max-height: 200px; /* Adjust as needed */
-            padding-bottom: 20px;
-        }
-        .faq-item.active .faq-question i {
-            transform: rotate(45deg);
+        
+        .final-cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
 
         /* --- Footer --- */
         .footer {
             text-align: center;
-            margin-top: 30px;
-            padding: 30px 0;
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid var(--card-bg);
             color: #888;
         }
+
         .footer a {
-            color: var(--text-muted);
+            color: var(--primary-light);
             text-decoration: none;
-            margin: 0 10px;
+            transition: color 0.2s ease;
         }
         .footer a:hover {
-            color: var(--primary-color);
+            color: var(--text-light);
         }
-        
+
         @media (max-width: 600px) {
             .header h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
-            .section-title {
-                font-size: 2rem;
+            .download-button {
+                font-size: 1.2rem;
+                padding: 15px 30px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- =========== HEADER & DOWNLOAD SECTION =========== -->
     <div class="container">
+        <!-- =========== HEADER & DOWNLOAD SECTION =========== -->
         <header class="header">
             <img src="https://i.ibb.co/sk3fFFt/Picsart-25-10-28-18-00-50-166.png" alt="GURU App Logo" class="app-logo">
             <h1>GURU</h1>
-            <p class="subtitle">The ultimate platform for competitive gaming. Join tournaments, win rewards, and become a champion!</p>
+            <p class="subtitle">The ultimate platform for competitive mobile gaming. Join tournaments, win rewards, and prove your skills!</p>
             
             <a href="https://www.mediafire.com/file/mxa818miar7c3v6/GURU%25282%2529.apk/file" class="download-button">
                 <i class="fas fa-download icon"></i>
@@ -233,112 +267,89 @@
             </a>
             <p class="file-info"><i class="fab fa-android"></i> Android APK | Size: 32.27 MB</p>
         </header>
+
+        <main>
+            <!-- =========== HOW IT WORKS SECTION =========== -->
+            <section>
+                <h2 class="section-title">How It Works</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <i class="fas fa-gamepad icon"></i>
+                        <h3>1. Join a Match</h3>
+                        <p>Browse through daily tournaments for your favorite games. Choose a match that fits your schedule and pay the small entry fee using our secure system.</p>
+                    </div>
+                    <div class="step-card">
+                        <i class="fas fa-crosshairs icon"></i>
+                        <h3>2. Play & Compete</h3>
+                        <p>You'll receive the Room ID and Password before the match starts. Join the custom room, play your best, and aim for victory and high kills!</p>
+                    </div>
+                    <div class="step-card">
+                        <i class="fas fa-trophy icon"></i>
+                        <h3>3. Win & Get Rewarded</h3>
+                        <p>Prizes are distributed instantly after the results are verified by our admin team. Winnings are added directly to your in-app wallet.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- =========== FEATURES SECTION =========== -->
+            <section class="features-section">
+                <h2 class="section-title">Why Gamers Love GURU</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-user-friends icon"></i>
+                        <div class="text-content">
+                           <h3>Community Driven</h3>
+                           <p>Play with a vibrant community of passionate gamers. Make squads and compete together.</p>
+                        </div>
+                    </div>
+                     <div class="feature-card">
+                        <i class="fas fa-bolt icon"></i>
+                        <div class="text-content">
+                           <h3>Fast & Smooth</h3>
+                           <p>Our app is optimized for performance, ensuring a lag-free and seamless gaming experience.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-wallet icon"></i>
+                        <div class="text-content">
+                           <h3>Easy Withdrawals</h3>
+                           <p>Withdraw your winnings effortlessly. Your prize money is sent to your account within 24 hours.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-headset icon"></i>
+                        <div class="text-content">
+                           <h3>24/7 Customer Support</h3>
+                           <p>Our dedicated team is always available. Contact us via Telegram or email for any assistance.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- =========== TRUST & SAFETY SECTION =========== -->
+            <section class="trust-section">
+                <i class="fas fa-shield-halved icon"></i>
+                <h2>Your Trust, Our Priority</h2>
+                <p>GURU is a 100% skill-based platform. We have a zero-tolerance policy against hacking and cheating. Our admin team monitors all matches to ensure fair play. All financial transactions are encrypted and secure.</p>
+            </section>
+            
+            <!-- =========== FINAL CTA SECTION =========== -->
+            <section class="final-cta">
+                <h2 class="section-title" style="margin-top:0;">Ready to Become a Champion?</h2>
+                <a href="https://www.mediafire.com/file/mxa818miar7c3v6/GURU%25282%2529.apk/file" class="download-button">
+                    <i class="fas fa-download icon"></i>
+                    <span>Download Now</span>
+                </a>
+            </section>
+        </main>
+        
+        <!-- =========== FOOTER SECTION =========== -->
+        <footer class="footer">
+            <p>&copy; 2025 GURU Gaming Platform. All Rights Reserved.</p>
+            <p><a href="mailto:support@guruapp.com">Contact Us</a> | <a href="#">Privacy Policy</a></p>
+        </footer>
+
     </div>
 
-    <main>
-        <!-- =========== APP SCREENSHOTS SECTION =========== -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">See It In Action</h2>
-                <div class="gallery-grid">
-                    <!-- IMPORTANT: Replace these placeholder image URLs with your own app screenshots -->
-                    <div class="gallery-item"><img src="https://i.imgur.com/uGzST61.png" alt="App Screenshot 1 - Home Screen"></div>
-                    <div class="gallery-item"><img src="https://i.imgur.com/8Qj9Y0b.png" alt="App Screenshot 2 - Tournament List"></div>
-                    <div class="gallery-item"><img src="https://i.imgur.com/dAF8R2g.png" alt="App Screenshot 3 - Profile Page"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========== HOW IT WORKS SECTION =========== -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">How It Works</h2>
-                <div class="how-it-works-grid">
-                    <div class="step-card">
-                        <span class="step-number">1</span>
-                        <h3>Register</h3>
-                        <p>Create your free account in seconds and set up your gamer profile.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number">2</span>
-                        <h3>Join a Match</h3>
-                        <p>Browse upcoming tournaments, choose your favorite game, and join a match.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number">3</span>
-                        <h3>Play & Dominate</h3>
-                        <p>Play against real players, showcase your skills, and aim for the top rank.</p>
-                    </div>
-                    <div class="step-card">
-                        <span class="step-number">4</span>
-                        <h3>Win Rewards</h3>
-                        <p>Win real cash prizes and withdraw your earnings instantly and securely.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========== FAQ SECTION =========== -->
-        <section class="section">
-            <div class="container">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <div class="faq-container">
-                    <div class="faq-item">
-                        <div class="faq-question">Is this app safe to use? <i class="fas fa-plus"></i></div>
-                        <div class="faq-answer">
-                            <p>Absolutely. We prioritize your security. All data is encrypted, and transactions are processed through secure channels. Your account and winnings are always safe with us.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">Is this a real money gaming app? <i class="fas fa-plus"></i></div>
-                        <div class="faq-answer">
-                            <p>GURU is a 100% skill-based esports platform. Just like in any sport, you participate with an entry fee and earn prizes based on your performance and skill, not luck or chance.</p>
-                        </div>
-                    </div>
-                    <div class="faq-item">
-                        <div class="faq-question">How can I withdraw my winnings? <i class="fas fa-plus"></i></div>
-                        <div class="faq-answer">
-                            <p>You can easily withdraw your winnings from the 'Wallet' section in the app. Just enter your details and the amount. We process withdrawals instantly to ensure you get your money quickly.</p>
-                        </div>
-                    </div>
-                     <div class="faq-item">
-                        <div class="faq-question">What if I face an issue or find a cheater? <i class="fas fa-plus"></i></div>
-                        <div class="faq-answer">
-                            <p>We have a zero-tolerance policy for cheating. If you face any problem or suspect unfair play, contact our admin team directly through the app's help section. We are available to help you.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    
-    <!-- =========== FOOTER SECTION =========== -->
-    <footer class="footer">
-        <p>&copy; 2025 GURU Gaming Platform. All Rights Reserved.</p>
-        <p>
-            <a href="mailto:support@guruapp.com">Contact Us</a> | 
-            <a href="#">Privacy Policy</a> | 
-            <a href="#">Terms of Service</a>
-        </p>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    // Close other active items
-                    faqItems.forEach(otherItem => {
-                        if (otherItem !== item && otherItem.classList.contains('active')) {
-                            otherItem.classList.remove('active');
-                        }
-                    });
-                    // Toggle current item
-                    item.classList.toggle('active');
-                });
-            });
-        });
-    </script>
 </body>
 </html>
