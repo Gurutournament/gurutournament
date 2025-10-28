@@ -9,12 +9,12 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
         :root {
-            --primary-color: #6c5ce7;
-            --dark-bg: #1a1f2d;
-            --card-bg: #2a3041;
+            --primary-color: #8A2BE2; /* A vibrant purple */
+            --secondary-color: #FFD700; /* Gold for highlights */
+            --dark-bg: #121828;
+            --card-bg: #1B2133;
             --text-light: #f5f6fa;
-            --text-secondary: #a29bfe;
-            --success-color: #00b894;
+            --text-muted: #a29bfe;
         }
 
         * {
@@ -23,61 +23,55 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-light);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.7;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--card-bg);
         }
 
         /* --- Header --- */
         .header {
             text-align: center;
-            padding: 40px 0;
-            border-bottom: 1px solid var(--card-bg);
+            padding: 60px 0;
         }
 
         .app-logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-            background-color: var(--card-bg);
+            width: 140px;
+            height: 140px;
+            border-radius: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border: 3px solid var(--primary-color);
         }
 
         .header h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--primary-color), var(--text-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            letter-spacing: -1px;
+            color: var(--text-light);
         }
 
-        .header p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- Download Section --- */
-        .download-section {
-            background-color: var(--card-bg);
-            padding: 40px;
-            margin-top: 40px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin: 10px auto 30px;
         }
 
         .download-button {
@@ -85,156 +79,266 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            background: linear-gradient(90deg, var(--primary-color), #8e82ff);
+            background: var(--primary-color);
             color: var(--text-light);
             padding: 18px 40px;
             border-radius: 50px;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
         }
 
         .download-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(108, 92, 231, 0.5);
-        }
-
-        .download-button .icon {
-            font-size: 1.8rem;
+            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.6);
         }
 
         .file-info {
             margin-top: 15px;
             font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        /* --- Features Section --- */
-        .features-section {
-            margin-top: 50px;
+            color: var(--text-muted);
         }
 
+        /* --- Section Titles --- */
         .section-title {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: var(--text-secondary);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: var(--text-light);
         }
-
-        .features-grid {
+        
+        /* --- Gallery Section --- */
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            gap: 20px;
+        }
+        .gallery-item img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
         }
 
-        .feature-card {
-            background-color: var(--card-bg);
-            padding: 25px;
+        /* --- How It Works Section --- */
+        .how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+        }
+        .step-card {
+            background: var(--card-bg);
+            padding: 30px;
             border-radius: 16px;
             text-align: center;
-            border-left: 4px solid var(--primary-color);
+            border-top: 4px solid var(--primary-color);
         }
-        
-        .feature-card .icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
+        .step-card .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.2rem;
             margin-bottom: 15px;
         }
-        
-        .feature-card h3 {
-            font-size: 1.4rem;
+        .step-card h3 {
+            font-size: 1.3rem;
             margin-bottom: 10px;
         }
-        
-        .feature-card p {
-            color: #bbb;
+        .step-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- FAQ Section --- */
+        .faq-item {
+            background-color: var(--card-bg);
+            margin-bottom: 10px;
+            border-radius: 12px;
+        }
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-muted);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust as needed */
+            padding-bottom: 20px;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(45deg);
         }
 
         /* --- Footer --- */
         .footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid var(--card-bg);
+            margin-top: 30px;
+            padding: 30px 0;
             color: #888;
         }
-
         .footer a {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             text-decoration: none;
+            margin: 0 10px;
         }
-
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+        
         @media (max-width: 600px) {
             .header h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
-            .download-button {
-                font-size: 1.2rem;
-                padding: 15px 30px;
+            .section-title {
+                font-size: 2rem;
             }
         }
-
     </style>
 </head>
 <body>
 
+    <!-- =========== HEADER & DOWNLOAD SECTION =========== -->
     <div class="container">
-        <!-- =========== HEADER & LOGO SECTION =========== -->
         <header class="header">
-            <!-- Logo URL has been updated for you -->
             <img src="https://i.ibb.co/sk3fFFt/Picsart-25-10-28-18-00-50-166.png" alt="GURU App Logo" class="app-logo">
             <h1>GURU</h1>
-            <p>The next-level platform for competitive mobile gaming. Join tournaments, win rewards, and prove your skills!</p>
-        </header>
-
-        <main>
-            <!-- =========== DOWNLOAD BUTTON SECTION =========== -->
-            <section class="download-section">
-                <!-- Link and size have been updated for you -->
-                <a href="https://www.mediafire.com/file/mxa818miar7c3v6/GURU%25282%2529.apk/file" class="download-button">
-                    <i class="fas fa-download icon"></i>
-                    <span>Download APK</span>
-                </a>
-                <p class="file-info"><i class="fas fa-file-archive"></i> Android APK | Size: 32.27 MB</p>
-            </section>
+            <p class="subtitle">The ultimate platform for competitive gaming. Join tournaments, win rewards, and become a champion!</p>
             
-            <!-- =========== FEATURES / RULES SECTION =========== -->
-            <section class="features-section">
-                <h2 class="section-title">Why Choose GURU?</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <i class="fas fa-shield-halved icon"></i>
-                        <h3>100% Safe & Secure</h3>
-                        <p>Your data and transactions are protected with top-tier security. Play with peace of mind.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-trophy icon"></i>
-                        <h3>Fair-Play Guaranteed</h3>
-                        <p>We ensure a hack-free environment. Winning is based on pure skill, not on cheats or tricks.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-headset icon"></i>
-                        <h3>Dedicated Support</h3>
-                        <p>Facing an issue? Our admin team is just a message away. Get quick and reliable support for any problem.</p>
-                    </div>
-                    <div class="feature-card">
-                        <i class="fas fa-wallet icon"></i>
-                        <h3>Instant Withdrawals</h3>
-                        <p>Your winnings are yours. We process withdrawals quickly so you can enjoy your rewards without any delay.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <!-- =========== FOOTER SECTION =========== -->
-        <footer class="footer">
-            <p>&copy; 2025 GURU Gaming Platform. All Rights Reserved.</p>
-            <p><a href="mailto:support@guruapp.com">Contact Us</a> | <a href="#">Privacy Policy</a></p>
-        </footer>
-
+            <a href="https://www.mediafire.com/file/mxa818miar7c3v6/GURU%25282%2529.apk/file" class="download-button">
+                <i class="fas fa-download icon"></i>
+                <span>Download APK</span>
+            </a>
+            <p class="file-info"><i class="fab fa-android"></i> Android APK | Size: 32.27 MB</p>
+        </header>
     </div>
 
+    <main>
+        <!-- =========== APP SCREENSHOTS SECTION =========== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">See It In Action</h2>
+                <div class="gallery-grid">
+                    <!-- IMPORTANT: Replace these placeholder image URLs with your own app screenshots -->
+                    <div class="gallery-item"><img src="https://i.imgur.com/uGzST61.png" alt="App Screenshot 1 - Home Screen"></div>
+                    <div class="gallery-item"><img src="https://i.imgur.com/8Qj9Y0b.png" alt="App Screenshot 2 - Tournament List"></div>
+                    <div class="gallery-item"><img src="https://i.imgur.com/dAF8R2g.png" alt="App Screenshot 3 - Profile Page"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== HOW IT WORKS SECTION =========== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <div class="how-it-works-grid">
+                    <div class="step-card">
+                        <span class="step-number">1</span>
+                        <h3>Register</h3>
+                        <p>Create your free account in seconds and set up your gamer profile.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">2</span>
+                        <h3>Join a Match</h3>
+                        <p>Browse upcoming tournaments, choose your favorite game, and join a match.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">3</span>
+                        <h3>Play & Dominate</h3>
+                        <p>Play against real players, showcase your skills, and aim for the top rank.</p>
+                    </div>
+                    <div class="step-card">
+                        <span class="step-number">4</span>
+                        <h3>Win Rewards</h3>
+                        <p>Win real cash prizes and withdraw your earnings instantly and securely.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== FAQ SECTION =========== -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">Is this app safe to use? <i class="fas fa-plus"></i></div>
+                        <div class="faq-answer">
+                            <p>Absolutely. We prioritize your security. All data is encrypted, and transactions are processed through secure channels. Your account and winnings are always safe with us.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Is this a real money gaming app? <i class="fas fa-plus"></i></div>
+                        <div class="faq-answer">
+                            <p>GURU is a 100% skill-based esports platform. Just like in any sport, you participate with an entry fee and earn prizes based on your performance and skill, not luck or chance.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How can I withdraw my winnings? <i class="fas fa-plus"></i></div>
+                        <div class="faq-answer">
+                            <p>You can easily withdraw your winnings from the 'Wallet' section in the app. Just enter your details and the amount. We process withdrawals instantly to ensure you get your money quickly.</p>
+                        </div>
+                    </div>
+                     <div class="faq-item">
+                        <div class="faq-question">What if I face an issue or find a cheater? <i class="fas fa-plus"></i></div>
+                        <div class="faq-answer">
+                            <p>We have a zero-tolerance policy for cheating. If you face any problem or suspect unfair play, contact our admin team directly through the app's help section. We are available to help you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- =========== FOOTER SECTION =========== -->
+    <footer class="footer">
+        <p>&copy; 2025 GURU Gaming Platform. All Rights Reserved.</p>
+        <p>
+            <a href="mailto:support@guruapp.com">Contact Us</a> | 
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a>
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other active items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
